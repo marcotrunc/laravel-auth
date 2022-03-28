@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     {{-- Header --}}
     <header class="d-flex justify-content-between">
         <h1>Tutti i Post</h1>
@@ -27,11 +26,18 @@
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
                 <td>{{$post->created_at}}</td>
-                <td class="d-flex justify-content-end align-items-center">
-                <form action="{{route('admin.posts.destroy',$post->id)}}" method="POST">
+                <td class="d-flex justify-content-between align-items-center">
+                {{-- Show --}}
+                <a href="{{route('admin.posts.show',$post->id)}}" class="btn btn-sm btn-info">
+                  <i class="fa-solid fa-eye"></i></a>
+                  {{-- Edit --}}
+                <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">
+                  <i class="fa-solid fa-pencil"></i></a> 
+                  {{-- Delete --}}
+                <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST">
                   @method('DELETE')
                   @csrf
-                  <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                  <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
                 </form>
                 </td>
               </tr>
@@ -42,5 +48,5 @@
             @endforelse
         </tbody>
       </table>
-</div>
+
 @endsection
