@@ -3,11 +3,14 @@
 @section('content')
 <div class="container">
     {{-- Header --}}
-    <header>
+    <header class="d-flex justify-content-between">
         <h1>Tutti i Post</h1>
+        <button class="btn btn-sm btn-success">
+            <a href="{{route('admin.posts.create')}}" class="text-white">Aggiungi</a>
+        </button>
     </header>
     {{-- Table --}}
-    <table class="table table-dark">
+    <table class="table table-dark mt-4">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -25,7 +28,6 @@
                 <td>{{$post->slug}}</td>
                 <td>{{$post->created_at}}</td>
                 <td class="d-flex justify-content-end align-items-center">
-                    Actions
                 </td>
               </tr>
               @empty
