@@ -5,9 +5,9 @@
     {{-- Header --}}
     <header class="d-flex justify-content-between">
         <h1>Tutti i Post</h1>
-        <button class="btn btn-sm btn-success">
-            <a href="{{route('admin.posts.create')}}" class="text-white">Aggiungi</a>
-        </button>
+        <div>
+          <a href="{{route('admin.posts.create')}}" class="btn btn-success d-flex align-content-center">Aggiungi</a>
+        </div>
     </header>
     {{-- Table --}}
     <table class="table table-dark mt-4">
@@ -28,11 +28,16 @@
                 <td>{{$post->slug}}</td>
                 <td>{{$post->created_at}}</td>
                 <td class="d-flex justify-content-end align-items-center">
+                <form action="{{route('admin.posts.destroy',$post->id)}}" method="POST">
+                  @method('DELETE')
+                  @csrf
+                  <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                </form>
                 </td>
               </tr>
               @empty
                 <tr>
-                    <td colsapn=""><h3>Non vi sono posts disponibili</h3> </td>
+                    <td colspan=""><h3>Non vi sono posts disponibili</h3> </td>
                 </tr>
             @endforelse
         </tbody>
