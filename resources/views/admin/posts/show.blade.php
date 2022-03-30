@@ -11,7 +11,7 @@
                      <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-sm btn-warning">
                         <i class="fa-solid fa-pencil"></i>
                     </a> 
-                    <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST">
+                    <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST" class="delete-form">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash mr-2"></i><span>Cancel</span></button>
@@ -21,4 +21,7 @@
         </div>
     </section>
 </div>
+@endsection
+@section('others-script')
+<script src="{{ asset('js/delete-script.js') }}" defer></script>
 @endsection

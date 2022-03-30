@@ -83,5 +83,6 @@
             </div>
         </main>
     </div>
+    @yield('others-script')
 </body>
 </html>
