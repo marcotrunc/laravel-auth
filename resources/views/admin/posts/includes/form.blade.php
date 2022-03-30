@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-1">
-                <img src="{{old('image',$post->image )}} ?? https://www.geometrian.it/wp-content/uploads/2016/12/image-placeholder-500x500.jpg" alt="{{$post->title}}" id="preview" width="100px" class="@error('image') is-invalid @enderror">
+                <img src="{{old('image', $post->image ?? 'https://www.geometrian.it/wp-content/uploads/2016/12/image-placeholder-500x500.jpg') }} " alt="{{$post->title}}" id="preview" width="100px" class="@error('image') is-invalid @enderror">
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success">
